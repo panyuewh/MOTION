@@ -51,7 +51,7 @@ encrypto::motion::ShareWrapper DummyArithmeticGmwShare(encrypto::motion::PartyPo
 
   wires[0] =
       std::make_shared<encrypto::motion::proto::arithmetic_gmw::Wire<T>>(dummy_input, *backend);
-  register_pointer->RegisterNextWire(wires[0]);
+  register_pointer->RegisterWire(wires[0]);
   wires[0]->SetOnlineFinished();
 
   return encrypto::motion::ShareWrapper(
@@ -70,7 +70,7 @@ encrypto::motion::ShareWrapper DummyBmrShare(encrypto::motion::PartyPointer& par
   for (auto& w : wires) {
     auto bmr_wire{std::make_shared<encrypto::motion::proto::bmr::Wire>(dummy_input, *backend)};
     w = bmr_wire;
-    register_pointer->RegisterNextWire(bmr_wire);
+    register_pointer->RegisterWire(bmr_wire);
     bmr_wire->GetMutablePublicKeys() = encrypto::motion::Block128Vector::MakeZero(
         backend->GetConfiguration()->GetNumOfParties() * number_of_simd);
     bmr_wire->GetMutableSecretKeys() = encrypto::motion::Block128Vector::MakeZero(number_of_simd);
@@ -94,7 +94,7 @@ encrypto::motion::ShareWrapper DummyBooleanGmwShare(encrypto::motion::PartyPoint
 
   for (auto& w : wires) {
     w = std::make_shared<encrypto::motion::proto::boolean_gmw::Wire>(dummy_input, *backend);
-    register_pointer->RegisterNextWire(w);
+    register_pointer->RegisterWire(w);
     w->SetOnlineFinished();
   }
 

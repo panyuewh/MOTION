@@ -174,7 +174,7 @@ std::pair<program_options::variables_map, std::vector<bool>> ParseProgramOptions
         user_options["parties"].as<std::vector<std::string>>()};
     if ((other_parties.size() != 3 &&
          (user_options.count("input") || user_options.count("input-file"))) ||
-        (other_parties.size() != 2 && user_options.count("input-file-shared")))
+        (other_parties.size() != 3 && user_options.count("input-file-shared")))
       throw std::runtime_error(fmt::format(
           "Incorrect number of parties {} for the chosen input type", other_parties.size()));
 

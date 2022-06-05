@@ -91,8 +91,8 @@ elseif (NOT fmt_FOUND AND NOT TARGET fmt::fmt)
     # we use the header-only version of fmt
     # -> add `target_compile_definitions($TARGET PUBLIC FMT_HEADER_ONLY)` for
     # targets using fmt
-    #set(FMT_TEST OFF CACHE BOOL "Enable building fmt tests" FORCE)
-    #add_subdirectory(extern/fmt)
+    set(FMT_TEST OFF CACHE BOOL "Enable building fmt tests" FORCE)
+    add_subdirectory(extern/fmt)
 endif ()
 
 set(FBS_DIR_FULL_PREFIX "${MOTION_ROOT_DIR}/fbs")

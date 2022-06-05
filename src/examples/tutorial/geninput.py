@@ -72,19 +72,23 @@ def gen_mult3_shared_arithmetic_input():
     BITS = 10;
     f0 = open("mult3/data/mult3shared_arit.0.dat",'w+')
     f1 = open("mult3/data/mult3shared_arit.1.dat",'w+')
+    f2 = open("mult3/data/mult3shared_arit.2.dat",'w+')
 
     product = 1
     for _ in range(3):
         x = random.getrandbits(BITS)
         left = random.randrange(x)
+        left2 = random.randrange(left)
 
         f0.write("%d\n"%(x-left))
-        f1.write("%d\n"%left)
+        f1.write("%d\n"%(left-left2))
+        f2.write("%d\n"%left2)
 
         product *= x
 
     f0.close()
     f1.close()
+    f2.close()
 
     print("Expected result: %d" % product)
 
@@ -94,19 +98,24 @@ def gen_mult3_shared_boolean_input():
     BITS = 10;
     f0 = open("mult3/data/mult3shared_bool.0.dat",'w+')
     f1 = open("mult3/data/mult3shared_bool.1.dat",'w+')
+    f2 = open("mult3/data/mult3shared_bool.2.dat",'w+')
 
     product = 1
     for _ in range(3):
         x = random.getrandbits(BITS)
         left = random.randrange(x)
+        left2 = random.randrange(left)
 
         f0.write("%d\n"%(x^left))
-        f1.write("%d\n"%left)
+        f1.write("%d\n"%(left^left2))
+        f2.write("%d\n"%(left2))
+
 
         product *= x
 
     f0.close()
     f1.close()
+    f2.close()
 
     print("Expected result: %d" % product)
 
